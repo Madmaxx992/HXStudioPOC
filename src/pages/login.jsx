@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Swal from 'sweetalert2';
 import { useNavigate } from "react-router-dom";
 import backgroundImage from '../assets/background.png'; 
-import logo from '../assets/logo.svg'; 
+import logo from '../assets/logo.png'; 
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
@@ -44,12 +44,11 @@ const LoginPage = () => {
     <div
       className="min-h-screen flex flex-col justify-center items-center py-12"
       style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
-    >
-      <div className="flex justify-center mb-4">
-        <img src={logo} alt="Logo" className="h-12" />
-      </div>
-          
+    >   
       <div className="w-full max-w-md bg-white rounded-lg shadow-2xl overflow-hidden">
+        <div className="flex justify-center mt-12 mb-4">
+          <img src={logo} alt="Logo" className="h-12" />
+        </div>
         <p className="text-1xl font-bold text-black text-center">Login into Your Account</p>
         <form onSubmit={handleSubmit} className="px-16 py-6 space-y-6"> 
           <div>
