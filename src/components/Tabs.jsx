@@ -1,15 +1,22 @@
-
 const Tabs = ({ tabs, activeTab, onTabClick }) => {
   return (
     <div className="relative">
-      <div className="absolute top-8" style={{ left: "4.5rem" }}>
+      <div className="flex flex-row absolute top-8 w-full">
         {tabs.map((tab, index) => (
           <button
             key={tab}
-            className={`px-4 py-2 text-sm font-medium text-gray-900 ${
-              activeTab === index ? "bg-white shadow" : "hover:bg-gray-100"
-            }`}
+            className={`px-6 py-2 whitespace-nowrap font-medium ${
+              activeTab === index
+                ? "bg-white text-black shadow"
+                : "bg-transparent text-white"
+            } hover:bg-gray-100 hover:text-black`}
             onClick={() => onTabClick(index)}
+            style={{
+              minWidth: "260px",
+              textAlign: "center",
+              backgroundColor: activeTab === index ? "white" : "transparent",
+              color: activeTab === index ? "black" : "white",
+            }}
           >
             {tab}
           </button>
@@ -18,5 +25,4 @@ const Tabs = ({ tabs, activeTab, onTabClick }) => {
     </div>
   );
 };
-
 export default Tabs;

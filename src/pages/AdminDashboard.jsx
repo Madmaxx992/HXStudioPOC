@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Navbar from "../components/Navbar";
+import ProjectList from "../components/ProjectList";
 
 const AdminDashboardContainer = styled.div`
   width: 1215px;
@@ -7,7 +8,12 @@ const AdminDashboardContainer = styled.div`
 `;
 
 const AdminDashboard = () => {
-  return <AdminDashboardContainer> <Navbar /> </AdminDashboardContainer>;
+  return (
+    <AdminDashboardContainer>
+      <Navbar />
+      <ProjectList />
+    </AdminDashboardContainer>
+  );
 };
 
 export default AdminDashboard;

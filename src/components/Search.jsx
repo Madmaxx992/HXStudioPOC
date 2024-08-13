@@ -30,16 +30,16 @@ const SearchContainer = styled.div`
   padding-top: 10px;
   padding-bottom: 10px;
   border-radius: 8px;
-  width: 500px;
+  width: 1100px;
   position: absolute;
-  left: 320px;
-  top: 150px;
+  top: 197px;
+  left: 80px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
 `;
 
 const Search = () => {
   return (
-    <SearchContainer className="px-12">
+    <SearchContainer className="px-12 align-center justify-center">
       <SearchInput placeholder="Type your keyword here..." />
       <SearchButton>Search Mockup</SearchButton>
     </SearchContainer>

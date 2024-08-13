@@ -15,7 +15,7 @@ const NavbarWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 150px;
+  height: 240px;
   width: 100%;
   margin: 0 auto;
   border-radius: 12px;
