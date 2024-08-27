@@ -3,13 +3,12 @@ import Navbar from "../components/Navbar";
 import ProjectList from "../components/ProjectList";
 
 const AdminDashboardContainer = styled.div`
-  width: 1215px;
-  height: 695px;
+  max-width: 1200px;
 `;
 
 const AdminDashboard = () => {
   return (
-    <AdminDashboardContainer>
+    <AdminDashboardContainer className="w-full mx-auto h-full">
       <Navbar />
       <ProjectList />
     </AdminDashboardContainer>

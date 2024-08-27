@@ -6,7 +6,7 @@ import ProductUpload from "./components/ProductUpload";
 function App() {
   return (
     <Router>
-      <div className="App">
+      <div className="App bg-white">
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/admin/dashboard" element={<AdminDashboard />} />

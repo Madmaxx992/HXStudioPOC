@@ -1,26 +1,48 @@
-const Tabs = ({ tabs, activeTab, onTabClick }) => {
+import { useState } from 'react';
+
+const Tabs = () => {
+  const [selectedTab, setSelectedTab] = useState(0);
+  const _tabs = ['Visual Samples', 'Case Studies', 'Process Diagram & Artifacts', 'Before After'];
   return (
-    <div className="relative">
-      <div className="flex flex-row absolute top-8 w-full">
-        {tabs.map((tab, index) => (
-          <button
-            key={tab}
-            className={`px-6 py-2 whitespace-nowrap font-medium ${
-              activeTab === index
-                ? "bg-white text-black shadow"
-                : "bg-transparent text-white"
-            } hover:bg-gray-100 hover:text-black`}
-            onClick={() => onTabClick(index)}
-            style={{
-              minWidth: "260px",
-              textAlign: "center",
-              backgroundColor: activeTab === index ? "white" : "transparent",
-              color: activeTab === index ? "black" : "white",
-            }}
+    <div className="w-full translate-y-[40px] shadow-md">
+      {/* First Container: Tabs */}
+      <div className="flex bg-transparent rounded-t-lg overflow-hidden">
+        {_tabs.map((tab, index) => (
+          <div
+            key={index}
+            className={`px-4 py-2 cursor-pointer rounded-t-lg relative ${
+              selectedTab === index
+                ? 'bg-white text-black'
+                : 'bg-transparent text-white'
+            }`}
+            onClick={() => setSelectedTab(index)}
           >
             {tab}
-          </button>
+            {selectedTab === index && (
+              <div className="absolute bottom-0 left-4 right-4 h-1 bg-[#FF0C0C]"></div>
+            )}
+          </div>
         ))}
+      </div>
+
+      {/* Second Container: Input Textbox */}
+      <div className="bg-white p-4 rounded-b-lg -mt-2">
+        <label htmlFor="keyword" className="text-black mb-2 block">
+          Keyword
+        </label>
+        <div className="flex items-center">
+          <input
+            type="text"
+            id="keyword"
+            className="border-none outline-none bg-transparent flex-grow text-black placeholder-gray-500"
+            placeholder="Type your keyword here..."
+          />
+          <button
+            className="bg-[#6C67E1] text-white px-4 py-2 rounded-md ml-2"
+          >
+            Search Mockup
+          </button>
+        </div>
       </div>
     </div>
   );

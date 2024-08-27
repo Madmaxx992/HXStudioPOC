@@ -15,7 +15,6 @@ const NavbarWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 240px;
   width: 100%;
   margin: 0 auto;
   border-radius: 12px;
@@ -32,6 +31,8 @@ const LeftSection = styled.div`
   display: flex;
   align-items: center;
   position: relative;
+  justify-content: space-between;
+  max-width: 1110px;
 `;
 
 const RightSection = styled.div`
@@ -51,16 +52,16 @@ const Navbar = () => {
   const [activeTab, setActiveTab] = React.useState(0);
 
   return (
-    <NavbarWrapper>
-      <LeftSection>
+    <NavbarWrapper className="flex-col">
+      <LeftSection className="mx-auto w-full justify-between">
         <Logo />
-        <Tabs tabs={tabs} activeTab={activeTab} onTabClick={setActiveTab} />
+        <div className="flex">
+          <UploadMockup />
+          <Profile name="George Martin" />
+        </div>
       </LeftSection>
-      <Search />
-      <RightSection>
-        <UploadMockup />
-        <Profile name="George Martin" />
-      </RightSection>
+      <Tabs tabs={tabs} activeTab={activeTab} onTabClick={setActiveTab} />
+      {/* <Search /> */}
     </NavbarWrapper>
   );
 };

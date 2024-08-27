@@ -43,7 +43,7 @@ const upload = multer({ storage });
 
 // Route to handle form submission
 app.post(
-  "/admin/dashboard/upload",
+  "/api/admin/dashboard/upload",
   upload.single("image"),
   async (req, res) => {
     try {
@@ -68,7 +68,7 @@ app.post(
 );
 
 // Add this route to your Express server
-app.get("/admin/dashboard", async (req, res) => {
+app.get("/api/admin/dashboard", async (req, res) => {
   try {
     const projects = await Project.find();
     res.status(200).json(projects);
@@ -78,7 +78,7 @@ app.get("/admin/dashboard", async (req, res) => {
 });
 
 // Serve static files (e.g., uploaded images)
-app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+app.use("/api/uploads", express.static(path.join(__dirname, "uploads")));
 
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);

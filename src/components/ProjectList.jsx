@@ -81,7 +81,7 @@ const ProjectList = () => {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const response = await fetch("http://localhost:5000/admin/dashboard");
+        const response = await fetch("/api/admin/dashboard");
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
@@ -101,7 +101,7 @@ const ProjectList = () => {
         {projects.map((project) => (
           <ProjectCard key={project._id}>
             <ProjectImage
-              src={`http://localhost:5000/uploads/${project.image}`}
+              src={`/api/uploads/${project.image}`}
               alt={project.projectName}
             />
             <ProjectHeader>

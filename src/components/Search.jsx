@@ -1,12 +1,6 @@
 // Search.js
 import styled from "styled-components";
-
-const SearchInput = styled.input`
-  padding: 8px;
-  border-radius: 8px;
-  border: 1px solid #ddd;
-  width: 100%;
-`;
+import Tabs from "./Tabs";
 
 const SearchButton = styled.button`
   padding: 8px 16px;
@@ -25,22 +19,24 @@ const SearchContainer = styled.div`
   display: flex;
   align-items: center;
   background: white;
-  padding-left: 50px;
-  padding-right: 50px;
   padding-top: 10px;
   padding-bottom: 10px;
   border-radius: 8px;
-  width: 1100px;
-  position: absolute;
-  top: 197px;
-  left: 80px;
+  max-width: 1100px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+  transform: translateY(40px)
 `;
 
 const Search = () => {
   return (
-    <SearchContainer className="px-12 align-center justify-center">
-      <SearchInput placeholder="Type your keyword here..." />
+    <SearchContainer className="px-8 align-center justify-center w-full mx-auto">
+      {/* <SearchInput placeholder="Type your keyword here..." /> */}
+      <input
+        id="keyword"
+        type="text"
+        placeholder="Type your keyword here..."
+        className="p-3 flex-1 w-full bg-white text-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 border-0 shadow-none"
+      />
       <SearchButton>Search Mockup</SearchButton>
     </SearchContainer>
   );

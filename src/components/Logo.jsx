@@ -1,6 +1,6 @@
 // Logo.js
 import styled from "styled-components";
-import logoImage from "../assets/images/logo.png"; // Adjust the path accordingly
+import logoImage from "../assets/images/logo-light.png"; // Adjust the path accordingly
 
 const LogoWrapper = styled.div`
   display: flex;
