@@ -1,8 +1,8 @@
-// login.js
-
+// Login.jsx
 import { useState } from 'react';
 import Swal from 'sweetalert2';
 import { useNavigate } from "react-router-dom";
+import axios from 'axios'; // Import axios for API requests
 import backgroundImage from '../assets/images/background.png'; 
 import logo from '../assets/images/logo.png'; 
 
@@ -13,7 +13,7 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
 
@@ -28,16 +28,46 @@ const Login = () => {
       return;
     }
 
-    Swal.fire({
-      title: 'Success!',
-      text: 'Login successful.',
-      icon: 'success',
-      confirmButtonText: 'OK'
-    });
+    try {
+      // Send the login data to the backend for authentication
+      const response = await axios.post('http://localhost:5000/api/auth/login', {
+        email,
+        password,
+      });
 
-    setLoading(false);
-    // Redirect or handle post-login logic
-    navigate('/admin/dashboard');
+      const { token, role } = response.data;
+
+      if (role === 'admin') {
+        Swal.fire({
+          title: 'Success!',
+          text: 'Login successful.',
+          icon: 'success',
+          confirmButtonText: 'OK'
+        });
+
+        // Store the token (usually in localStorage or cookies)
+        localStorage.setItem('token', token);
+
+        setLoading(false);
+        navigate('/admin/dashboard');
+      } else {
+        Swal.fire({
+          title: 'Access Denied',
+          text: 'You do not have access to the admin dashboard.',
+          icon: 'error',
+          confirmButtonText: 'OK'
+        });
+        setLoading(false);
+      }
+    } catch (error) {
+      Swal.fire({
+        title: 'Login Failed',
+        text: 'Invalid email or password.',
+        icon: 'error',
+        confirmButtonText: 'OK'
+      });
+      setLoading(false);
+    }
   };
 
   return (
