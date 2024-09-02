@@ -17,7 +17,8 @@ const NavbarWrapper = styled.div`
   justify-content: space-between;
   width: 100%;
   margin: 0 auto;
-  border-radius: 12px;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
   position: relative;
 
   @media (max-width: 768px) {
