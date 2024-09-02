@@ -1,6 +1,7 @@
 // Profile.js
 import styled from "styled-components";
 import profileImage from "../assets/images/profile.png"; // Adjust the path accordingly
+import DropdownMenu from "./Dropdown";
 
 const ProfileWrapper = styled.div`
   display: flex;
@@ -19,13 +20,12 @@ const ProfileImage = styled.img`
   border-radius: 50%;
 `;
 
-const Profile = ({ name }) => {
-  return (
+const Profile = () => {
+  return (<>
     <ProfileWrapper>
-      <ProfileImage src={profileImage} alt={name} />
-      <ProfileName>{name}</ProfileName>
+      <DropdownMenu />
     </ProfileWrapper>
-  );
+  </>);
 };
 
 export default Profile;
