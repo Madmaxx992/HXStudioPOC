@@ -16,7 +16,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-
+  
     if (email === '' || password === '') {
       Swal.fire({
         title: 'Error!',
@@ -27,29 +27,32 @@ const Login = () => {
       setLoading(false);
       return;
     }
-
+  
     try {
       // Send the login data to the backend for authentication
       const response = await axios.post('http://localhost:5000/api/auth/login', {
         email,
         password,
       });
-
+  
       const { token, role } = response.data;
-
+  
+      Swal.fire({
+        title: 'Success!',
+        text: 'Login successful.',
+        icon: 'success',
+        confirmButtonText: 'OK'
+      });
+  
+      // Store the token (usually in localStorage or cookies)
+      localStorage.setItem('token', token);
+  
+      setLoading(false);
+  
       if (role === 'admin') {
-        Swal.fire({
-          title: 'Success!',
-          text: 'Login successful.',
-          icon: 'success',
-          confirmButtonText: 'OK'
-        });
-
-        // Store the token (usually in localStorage or cookies)
-        localStorage.setItem('token', token);
-
-        setLoading(false);
-        navigate('/admin/dashboard');
+        navigate('/admin/dashboard');  // Navigate to the admin dashboard
+      } else if (role === 'user') {
+        navigate('/user/dashboard');  // Navigate to the user dashboard
       } else {
         Swal.fire({
           title: 'Access Denied',
@@ -69,6 +72,7 @@ const Login = () => {
       setLoading(false);
     }
   };
+  
 
   return (
     <div
